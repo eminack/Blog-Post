@@ -61,6 +61,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .card{
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 .article-actions{
@@ -100,4 +101,39 @@
 }
 .btn-xlarge{
     font-size: 1.7em;
+}
+.list-group-item{
+    padding-bottom: 1px;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-top: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 4px;
+}
+.display-users{
+    display: inline-block;
+}
+#tagged-users{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color:rgb(133, 3, 83);
+    font-size: large;
+    margin-left: 02px;
+}
+#tagged-users-search{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color:green;
+    font-size: large;
+    margin-left: 2px;
+}
+#close-button{
+    font-weight: lighter;
+    font-size: larger;
+    margin-left: -10px;
+}
+.article-actions-search{
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

@@ -1,5 +1,31 @@
-<h1 align="center">Search results</h1>
-<p><%= @query %></p>
-<%= @search_results.each do |user| %>
-    <li><%= user.username %></li>
-<% end %>
+<h2 align="center">Title: <%= @article.title %></h2>
+<div class="offset-2 col-sm-8">
+    <%= render 'common' %>
+    <div class="card bg-light text-center">
+        <div class="card-body">
+            <div class = "article-actions-search">
+                <% if !@filter_results.empty? %>
+                    <h6 class="card-title-tag">Search Results:</h6>
+                    <ul class="list-group list-group-horizontal-sm">
+                        <% @filter_results.each do |tag_obj| %>
+                            <li class="list-group-item">
+                                <div class="display users">
+                                    <span class="btn", id="tagged-users-search"><%= tag_obj["username"] %></span>
+                                        <%= link_to "+",{action: "create",user_id: tag_obj["id"]}, method: :post, 
+                                                data: {confirm: "Are you sure you want to Tag this user ?"},
+                                                class: "btn-close btn-outline-danger ",id: "close-button", aria: {label: "Close"} %>
+                                </div>
+                            </li>
+                        <% end %>
+                    </ul>
+                <% else %>
+                    <h6 class="card-title-tag">No results found</h6>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="offset-5 col-sm-4 ">
+     [ <%= link_to "Return to article",article_path(@article) %> ]
+</div>
+

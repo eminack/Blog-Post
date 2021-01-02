@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'about' , to: 'pages#about'
   resources :articles
   resources :articles do
-    get '/tags' , to: 'tags#new'
-    post '/tags', to: 'tags#search'
+    resources :tags , except: [:put,:patch]
+    post '/search' , to: 'tags#search'
   end
   
   
