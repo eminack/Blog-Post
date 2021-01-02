@@ -1,0 +1,38 @@
+<%= obj.each do |article| %>
+    <div class="row">
+        <div class="offset-2 col-sm-8">
+            <div class="card card-lg">
+                <div class="card-body">
+                    <h5 class="article-title">
+                        <%= link_to article.title, article_path(article) %>
+                    </h5>
+                    <div class="article-body">
+                        <%= truncate(article.description,length:100) %>
+                        <div class="article-meta-details">
+                            <small>Created By: <%= article.user.username %>, <%= time_ago_in_words(article.created_at) %>
+                                            ago, last updated: <%= time_ago_in_words(article.updated_at) %>
+                            </small></br>
+                            <small>Tagged: <% if (article.users).empty? %> 
+                                                0 people 
+                                            <% elsif article.users.count == 1 %>
+                                                <%= article.users.first.username %>
+                                            <% else %>
+                                                <%= article.users.first.username %>  and <%= article.users.count.to_i - 1 %>
+                                                 others.
+                                            <% end %>
+                            </small>
+                        </div>
+                    </div>
+                    <% if logged_in? && current_user == article.user %>
+                        <div class = "article-actions">
+                            <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-sm btn-secondary" %>
+                            <%= link_to "Delete this article" ,article_path(article), method: :delete, 
+                                                            data: {confirm: "Are you sure you want to delete this article ?"},
+                                                            class: "btn btn-sm btn-danger" %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

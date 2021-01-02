@@ -1,1 +1,9 @@
-<h1 align="center">This is root page</h1>
+<div class = "center jumbotron">
+    
+    <% if logged_in? %>
+        <h1>Welcome to BLOG ADDA <%= current_user.username %> !</h1>
+    <% else %>
+        <h1>BLOG ADDA</h1>
+        <%= link_to "Sign up now" , signup_path, class:"btn btn-danger btn-lg btn-x-large"%>   
+    <% end %>
+</div>

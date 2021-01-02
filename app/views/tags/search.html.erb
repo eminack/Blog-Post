@@ -1,0 +1,5 @@
+<h1 align="center">Search results</h1>
+<p><%= @query %></p>
+<%= @search_results.each do |user| %>
+    <li><%= user.username %></li>
+<% end %>

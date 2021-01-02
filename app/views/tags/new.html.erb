@@ -1,0 +1,33 @@
+<h2 align="center">Title: <%= @article.title %></h2>
+<div class="offset-2 col-sm-8">
+    <div class="card bg-light text-center">
+        <div class="card-body">
+            <h5 class="card-title">Description:</h5>
+            <hr>
+            <p class="card-text">
+                <%= simple_format(@article.description) %>
+            </p>
+            <div class = "article-actions">
+                <h6 class="card-title-tag">Tagged users:</h6>
+                <ul class="list-group list-group-horizontal-sm">
+                    <% @tagged_users.each do |user| %>
+                        <%# <button type="button" class="btn btn-primary">
+                            Profile <span class="badge badge-light">9</span>
+                            <span class="sr-only">unread messages</span>
+                        </button> %>
+                        <li class="list-group-item"><%= user.username %></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Tag Users</a>
+        <div class="form-inline">
+        <%= form_for(:search,url: article_tags_path) do |f| %>
+            <%= f.search_field :query, placeholder: "Username..", class: "form-control mr-sm-2" %>  
+            <%= f.submit "Search"%>
+        <% end %>
+        </div>
+    </nav>
+</div>
