@@ -11,9 +11,11 @@ class TagsController < ApplicationController
     def create
         @tag = Tag.new(tag_params)
         if @tag.save
-            flash[:success] = "#{@tag.user.username} has been tagged successfully"
+            UserMailer.with(user: User.find(params[:user_id]),article: @article).new_user_mail.deliver_later
+            flash[:success] = "#{@tag.user.username} has been mailed successfully"
             redirect_to article_tags_path(@article)
         else
+            
             redirect_to article_tags_path(@article)
         end
 
