@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
     end
 
     def index
-        @articles = Article.where(user_id: current_user)
+        @articles = Article.where(user_id: current_user).order('updated_at DESC').paginate(page: params[:page],per_page: 3)
     end
     
     def show
@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
     end
 
     def tagged
-        @tagged_articles = current_user.articles
+        @tagged_articles = current_user.articles.order('updated_at DESC').paginate(page: params[:page],per_page: 3)
 
     end
 
